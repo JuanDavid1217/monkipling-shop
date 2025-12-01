@@ -1,13 +1,13 @@
 <template>
-  <section class="py-20 bg-gradient-to-b from-pink-900 via-pink-700 to-pink-900 overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section class="hero">
+    <div class="container">
 
-      <!-- Título opcional -->
-      <div class="text-center mb-12">
-        <h2 class="text-4xl md:text-5xl font-bold text-white tracking-tight">
+      <!-- TITULO CON ANIMACION (CAMBIO) -->
+      <div class="title-wrapper">
+        <h2 class="title animate-fade-up">
           Productos Destacados
         </h2>
-        <p class="mt-3 text-pink-100 text-lg">Las mejores piezas del momento</p>
+        <p class="subtitle">Las mejores piezas del momento</p>
       </div>
 
       <Swiper
@@ -18,53 +18,53 @@
         :autoplay="{ delay: 4000, disableOnInteraction: false }"
         :pagination="{ clickable: true }"
         :navigation="true"
-        :centered-slides="false"  
         :breakpoints="{
-          640:  { slidesPerView: 2, spaceBetween: 20 },
-          768:  { slidesPerView: 3, spaceBetween: 24 },
-          1024: { slidesPerView: 4, spaceBetween: 28 },
-          1280: { slidesPerView: 5, spaceBetween: 32 }
+          640:  { slidesPerView: 2 },
+          768:  { slidesPerView: 3 },
+          1024: { slidesPerView: 4 },
+          1280: { slidesPerView: 5 }
         }"
         class="my-swiper"
       >
-        <SwiperSlide v-for="(p, i) in productos" :key="i" class="pb-4">
-          <!-- Tarjeta mejorada -->
-          <div class="group relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 cursor-pointer">
-            
-            <!-- Badge categoría -->
-            <div class="absolute top-4 left-4 z-10">
-              <span class="bg-pink-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
-                {{ p.categoria }}
-              </span>
+
+        <SwiperSlide v-for="(p, i) in productos" :key="i">
+
+          <!-- CARD PREMIUM (CAMBIO TOTAL) -->
+          <div class="card">
+
+            <!-- GLOW EFECT (CAMBIO) -->
+            <div class="glow"></div>
+
+            <!-- BADGE CATEGORIA  (CAMBIO) -->
+            <span class="badge">{{ p.categoria }}</span>
+
+            <!-- IMAGEN -->
+            <div class="img-box">
+              <img :src="p.imagen" />
+              <!-- OVERLAY GRADIENTE (CAMBIO) -->
+              <div class="overlay"></div>
             </div>
 
-            <!-- Imagen con zoom -->
-            <div class="relative h-64 overflow-hidden bg-gradient-to-br from-pink-50 to-gray-50">
-              <img 
-                :src="p.imagen" 
-                :alt="p.nombre"
-                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            </div>
+            <!-- INFO -->
+            <div class="info">
+              <h3>{{ p.nombre }}</h3>
 
-            <!-- Texto y precio -->
-            <div class="p-5">
-              <h3 class="font-bold text-gray-800 text-lg line-clamp-2">
-                {{ p.nombre }}
-              </h3>
-              <div class="flex items-center justify-between mt-3">
-                <p class="text-2xl font-bold text-pink-600">
-                  {{ p.precio }}
-                </p>
-                <button class="opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0 transition-all duration-500 bg-pink-600 text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-pink-700 shadow-lg">
-                  Ver →
+              <div class="footer">
+                <!-- PRECIO (CAMBIO) -->
+                <p class="price">{{ p.precio }}</p>
+
+                <!-- BOTÓN CAMBIO) -->
+                <button class="btn">
+                  Ver producto →
                 </button>
               </div>
             </div>
+
           </div>
+
         </SwiperSlide>
       </Swiper>
+
     </div>
   </section>
 </template>
@@ -82,41 +82,218 @@ const productos = [
   { imagen: new URL('@/assets/images/bolso1.webp', import.meta.url).href, categoria: 'Coach', nombre: 'Set Coach Cherry + Llavero', precio: '$499' },
   { imagen: new URL('@/assets/images/bolso1.webp', import.meta.url).href, categoria: 'Stanley', nombre: 'Quencher H2.0 Crema 40oz', precio: '$85' },
   { imagen: new URL('@/assets/images/bolso1.webp', import.meta.url).href, categoria: 'Lujo', nombre: 'Bottega Veneta Cassette', precio: '$2,800' },
-  { imagen: new URL('@/assets/images/bolso1.webp', import.meta.url).href, categoria: 'Dior', nombre: 'Lady Dior Mini Pearl', precio: '$4,200' },
+  { imagen: new URL('@/assets/images/bolso1.webp', import.meta.url).href, categoria: 'Dior', nombre: 'Lady Dior Mini Pearl', precio: '$4,200' }
 ]
 </script>
 
 <style scoped>
-.my-swiper {
-  padding: 20px 0 70px;
+
+/* SECCIÓN */
+.hero{
+  background: linear-gradient(180deg,#831843,#be185d,#831843);
+  padding:80px 20px
+}
+.container{
+  max-width:1300px;
+  margin:auto;
 }
 
-/* Flechas elegantes (flotando fuera del carrusel) */
-.my-swiper :deep(.swiper-button-next),
-.my-swiper :deep(.swiper-button-prev) {
-  background: white;
-  width: 56px; height: 56px;
-  border-radius: 50%;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  top: 50%;
-  margin-top: -28px;
+/* TITULOS */
+.title-wrapper{
+  text-align:center;
+  margin-bottom:30px
 }
-.my-swiper :deep(.swiper-button-next:after),
-.my-swiper :deep(.swiper-button-prev:after) {
-  font-size: 22px;
-  font-weight: bold;
-  color: #ec4899;
+.title{
+  color:white;
+  font-size:48px;
+  margin:0
+}
+.subtitle{
+  color:#fbcfe8;
+  font-size: 42px;
 }
 
-/* Puntos bonitos debajo */
-.my-swiper :deep(.swiper-pagination-bullet) {
-  width: 12px;
-  height: 12px;
-  background: rgba(255,255,255,0.4);
-  opacity: 1;
+/* ANIMACIÓN (CAMBIO) */
+.animate-fade-up{
+  animation: fadeUp .9s ease both;
 }
-.my-swiper :deep(.swiper-pagination-bullet-active) {
-  background: white;
-  transform: scale(1.3);
+@keyframes fadeUp{
+  from {opacity:0; transform:translateY(20px)}
+  to {opacity:1; transform:translateY(0)}
 }
+
+/* CARD  del contenedor de las imagenes del carrusel*/
+.card{
+  background:white;
+  border-radius:28px;
+  overflow:hidden;
+  box-shadow:0 15px 35px rgba(0,0,0,.15);
+  transition:.4s ease;
+  position:relative
+}
+.card:hover{
+  transform:translateY(-12px);
+  box-shadow:0 20px 45px rgba(236,72,153,.35);
+}
+
+/* GLOW */
+.glow{
+  position:absolute;
+  bottom:-25px;
+  left:20px;
+  right:20px;
+  height:10px;
+  background:#ec4899;
+  filter:blur(28px);
+  opacity:0;
+  transition:.5s;
+}
+.card:hover .glow{
+  opacity:.6;
+}
+
+/* BADGE superior derecho */
+.badge{
+  position:absolute;
+  top:14px;
+  left:14px;
+  background:linear-gradient(45deg,#ec4899,#d946ef);
+  padding:6px 12px;
+  border-radius:20px;
+  font-size:11px;
+  font-weight:600;
+  color:white;
+  z-index:2;
+}
+
+/* IMAGEN */
+.img-box{
+  height:230px;
+  overflow:hidden;
+  position:relative;
+}
+.img-box img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .6s;
+}
+.card:hover img{
+  transform:scale(1.1);
+}
+
+/* OVERLAY (CAMBIO) */
+.overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,.45),transparent);
+  opacity:0;
+  transition:.5s;
+}
+.card:hover .overlay{
+  opacity:1;
+}
+
+/* INFO */
+.info{
+  padding:16px
+}
+.info h3{
+  font-size:15px;
+  color:#1f2933;
+  min-height:40px
+}
+
+/* FOOTER */
+.footer{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+/* PRECIO (CAMBIO) */
+.price{
+  font-size:20px;
+  font-weight:800;
+  background:linear-gradient(45deg,#ec4899,#d946ef);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+/* BOTÓN (CAMBIO) */
+.btn{
+  background:linear-gradient(45deg,#ec4899,#d946ef);
+  border:none;
+  padding:8px 18px;
+  border-radius:25px;
+  color:white;
+  font-size:12px;
+  cursor:pointer;
+  transform:translateY(8px);
+  opacity:0;
+  transition:.4s;
+  margin-top: 4px;
+}
+.card:hover .btn{
+  transform:translateY(0);
+  opacity:1;
+}
+.btn:hover{
+  transform:scale(1.05);
+}
+
+/* SWIPER */
+.my-swiper{
+  padding:30px 0 70px;
+}
+
+/* TELEFONO */
+
+@media(max-width:480px){
+  .title{
+    font-size: 30px;
+  }
+  .subtitle{
+    font-size: 14px;
+  }
+  .img-box{
+    height: 200px;
+  }
+  .info h3{
+    font-size: 14px;
+  }
+  .btn{
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* tablet */
+
+@media(min-width:481px) and (max-width:900px){
+
+  .title{
+    font-size:36px;
+  }
+
+  .img-box{
+    height:220px;
+  }
+
+}
+
+/* compu */
+@media(min-width:1200px){
+
+  .title{
+    font-size:48px;
+  }
+
+  .img-box{
+    height:270px;
+  }
+
+}
+
 </style>
