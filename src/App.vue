@@ -12,11 +12,9 @@
     --color3: #E8B3C0;
     --color4: #F8EAED;
     --color5: #FBF5F6;
-
-    --color-filter-blur: #00000090;
     
     --text-color-title: var(--color1);
-    --text-color-base: #333333;
+    --text-color-base: #37312B;
     --text-color-dark: var(--color1);
     --text-color-light: var(--color5);
 
