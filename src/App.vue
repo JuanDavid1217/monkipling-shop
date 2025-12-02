@@ -1,11 +1,7 @@
 <template>
   <HeaderComponent/>
   <router-view/>
-  
-  <CarruselComponent />
-   
   <FooterComponent/>
- 
 </template>
 
 <style>
@@ -87,14 +83,12 @@
 <script>
   import HeaderComponent from '@/components/HeaderComponent';
   import FooterComponent from '@/components/FooterComponent';
-  import CarruselComponent from './components/CarruselComponent.vue';
   
   export default {
     name: "App",
     components: {
       HeaderComponent,
-      FooterComponent,
-      CarruselComponent
+      FooterComponent
     }
   }
 </script>
