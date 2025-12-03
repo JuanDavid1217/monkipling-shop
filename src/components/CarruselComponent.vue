@@ -1,80 +1,68 @@
+<!-- CarruselComponent.vue -->
 <template>
   <section class="hero">
     <div class="container">
-
-      <!-- TITULO CON ANIMACION (CAMBIO) -->
       <div class="title-wrapper">
-        <h2 class="title animate-fade-up">
-          Productos Destacados
-        </h2>
-        <p class="subtitle">Las mejores piezas del momento</p>
+        <h2 class="title animate-fade-up">{{ titulo }}</h2>
+        <p class="subtitle">{{ descripcion }}</p>
       </div>
 
       <Swiper
         :modules="[Navigation, Pagination, Autoplay]"
-        :slides-per-view="1.2"
+        :slides-per-view="1"
         :space-between="24"
         :loop="true"
         :autoplay="{ delay: 4000, disableOnInteraction: false }"
         :pagination="{ clickable: true }"
         :navigation="true"
         :breakpoints="{
-          640:  { slidesPerView: 2 },
-          768:  { slidesPerView: 3 },
-          1024: { slidesPerView: 4 },
-          1280: { slidesPerView: 5 }
+          768:  { slidesPerView: 2 },
+          1024: { slidesPerView: 3 },
+          1280: { slidesPerView: 4 }
         }"
         class="my-swiper"
       >
-
         <SwiperSlide v-for="(p, i) in productos" :key="i">
-
-          <!-- CARD PREMIUM (CAMBIO TOTAL) -->
           <div class="card">
-
-            <!-- GLOW EFECT (CAMBIO) -->
             <div class="glow"></div>
-
-            <!-- BADGE CATEGORIA  (CAMBIO) -->
             <span class="badge">{{ p.categoria }}</span>
-
-            <!-- IMAGEN -->
             <div class="img-box">
               <img :src="p.imagen" />
-              <!-- OVERLAY GRADIENTE (CAMBIO) -->
               <div class="overlay"></div>
             </div>
-
-            <!-- INFO -->
             <div class="info">
               <h3>{{ p.nombre }}</h3>
-
               <div class="footer">
-                <!-- PRECIO (CAMBIO) -->
                 <p class="price">{{ p.precio }}</p>
-
-                <!-- BOTÓN CAMBIO) -->
-                <button class="btn">
-                  Ver producto →
-                </button>
+                <button class="btn">Agregar al Carrito   →</button>
               </div>
             </div>
-
           </div>
-
         </SwiperSlide>
       </Swiper>
-
     </div>
   </section>
 </template>
 
 <script setup>
+/* global defineProps */
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
+
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
+
+defineProps({
+  titulo: {
+    type: String,
+    default: 'Productos Destacados'
+  },
+  descripcion: {
+    type: String,
+    default: 'Las mejores piezas del momento'
+  }
+})
 
 const productos = [
   { imagen: new URL('@/assets/images/bolso1.webp', import.meta.url).href, categoria: 'Bolsos', nombre: 'Marc Jacobs Snapshot Lila', precio: '$289' },
@@ -86,34 +74,38 @@ const productos = [
 ]
 </script>
 
+
+
+
 <style scoped>
 
 /* SECCIÓN */
 .hero{
-  background: linear-gradient(180deg,#831843,#be185d,#831843);
-  padding:80px 20px
+  background: transparent;
+  padding:80px 0;
 }
+
 .container{
-  max-width:1300px;
+  width:100%;
   margin:auto;
 }
 
 /* TITULOS */
 .title-wrapper{
   text-align:center;
-  margin-bottom:30px
+  margin-bottom:32px;
 }
 .title{
-  color:white;
+  color:#A40138;
   font-size:48px;
-  margin:0
+  margin:0;
 }
 .subtitle{
-  color:#fbcfe8;
-  font-size: 42px;
+  color:#6b7280;
+  font-size:16px;
 }
 
-/* ANIMACIÓN (CAMBIO) */
+/* ANIMACIÓN */
 .animate-fade-up{
   animation: fadeUp .9s ease both;
 }
@@ -122,18 +114,18 @@ const productos = [
   to {opacity:1; transform:translateY(0)}
 }
 
-/* CARD  del contenedor de las imagenes del carrusel*/
+/* CARD */
 .card{
   background:white;
   border-radius:28px;
   overflow:hidden;
   box-shadow:0 15px 35px rgba(0,0,0,.15);
   transition:.4s ease;
-  position:relative
+  position:relative;
 }
 .card:hover{
   transform:translateY(-12px);
-  box-shadow:0 20px 45px rgba(236,72,153,.35);
+  box-shadow:0 20px 45px rgba(164,1,56,.35);
 }
 
 /* GLOW */
@@ -143,7 +135,7 @@ const productos = [
   left:20px;
   right:20px;
   height:10px;
-  background:#ec4899;
+  background:#A40138;
   filter:blur(28px);
   opacity:0;
   transition:.5s;
@@ -152,12 +144,12 @@ const productos = [
   opacity:.6;
 }
 
-/* BADGE superior derecho */
+/* BADGE */
 .badge{
   position:absolute;
   top:14px;
   left:14px;
-  background:linear-gradient(45deg,#ec4899,#d946ef);
+  background:linear-gradient(45deg,#A40138,#d946ef);
   padding:6px 12px;
   border-radius:20px;
   font-size:11px;
@@ -169,8 +161,8 @@ const productos = [
 /* IMAGEN */
 .img-box{
   height:230px;
-  overflow:hidden;
   position:relative;
+  overflow:hidden;
 }
 .img-box img{
   width:100%;
@@ -182,7 +174,7 @@ const productos = [
   transform:scale(1.1);
 }
 
-/* OVERLAY (CAMBIO) */
+/* OVERLAY */
 .overlay{
   position:absolute;
   inset:0;
@@ -194,14 +186,32 @@ const productos = [
   opacity:1;
 }
 
-/* INFO */
+/* INFO SOBRE LA IMAGEN */
 .info{
-  padding:16px
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top, rgba(0,0,0,0.65), rgba(0,0,0,0.15), transparent);
+  color:white;
+  padding:16px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+
+  opacity:0;
+  transform: translateY(20px);
+  transition:.4s ease;
 }
+
+/* Mostrar info al hacer hover */
+.card:hover .info{
+  opacity:1;
+  transform: translateY(0);
+}
+
+/* Texto */
 .info h3{
+  color:white;
   font-size:15px;
-  color:#1f2933;
-  min-height:40px
 }
 
 /* FOOTER */
@@ -209,23 +219,30 @@ const productos = [
   display:flex;
   justify-content:space-between;
   align-items:center;
-  flex-wrap:wrap;
+  gap:8px;
 }
 
-/* PRECIO (CAMBIO) */
+/* PRECIO */
 .price{
   font-size:20px;
   font-weight:800;
-  background:linear-gradient(45deg,#ec4899,#d946ef);
-  -webkit-background-clip:text;
-  color:transparent;
+  color:white;
+  text-shadow:0 2px 4px rgba(0,0,0,.4);
 }
 
-/* BOTÓN (CAMBIO) */
+/* BOTÓN */
+.card:hover .btn{
+  opacity:1;
+  transform:translateY(0);
+}
+
+
+
+/* BOTÓN */
 .btn{
-  background:linear-gradient(45deg,#ec4899,#d946ef);
+  background:linear-gradient(45deg,#000000,#d946ef);
   border:none;
-  padding:8px 18px;
+  padding:18px 18px;
   border-radius:25px;
   color:white;
   font-size:12px;
@@ -233,7 +250,6 @@ const productos = [
   transform:translateY(8px);
   opacity:0;
   transition:.4s;
-  margin-top: 4px;
 }
 .card:hover .btn{
   transform:translateY(0);
@@ -245,55 +261,66 @@ const productos = [
 
 /* SWIPER */
 .my-swiper{
-  padding:30px 0 70px;
+  padding:30px 20px 70px;
 }
 
-/* TELEFONO */
+/* CONTROLES SWIPER COLOR */
+:deep(.swiper-button-next),
+:deep(.swiper-button-prev){
+  color:#A40138 !important;
+}
 
+:deep(.swiper-pagination-bullet){
+  background:#A40138;
+  opacity:.3;
+}
+
+:deep(.swiper-pagination-bullet-active){
+  background:#A40138;
+  opacity:1;
+}
+
+/* MOBILE */
 @media(max-width:480px){
   .title{
-    font-size: 30px;
-  }
-  .subtitle{
-    font-size: 14px;
+    font-size:28px;
   }
   .img-box{
-    height: 200px;
-  }
-  .info h3{
-    font-size: 14px;
+    height:200px;
   }
   .btn{
-    width: 100%;
-    text-align: center;
+    width:100%;
+    text-align:center;
   }
 }
 
-/* tablet */
-
+/* TABLET */
 @media(min-width:481px) and (max-width:900px){
-
   .title{
     font-size:36px;
   }
-
   .img-box{
     height:220px;
   }
-
 }
 
-/* compu */
+/* DESKTOP */
 @media(min-width:1200px){
-
-  .title{
-    font-size:48px;
-  }
-
   .img-box{
     height:270px;
   }
-
 }
+@media(max-width:768px){
+  .info{
+    opacity:1;
+    transform:none;
+  }
+
+  .btn{
+    opacity:1;
+    transform:none;
+  }
+}
+
 
 </style>
