@@ -62,7 +62,6 @@
         font-family: inherit;
         flex: 1;
         border: none;
-        border-radius: .3rem;
         padding: .5rem 1rem;
         font-weight: bold;
         background-color: var(--color1);

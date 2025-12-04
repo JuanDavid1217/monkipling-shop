@@ -24,7 +24,6 @@
       >
         <SwiperSlide v-for="(p, i) in productos" :key="i">
           <div class="card">
-            <div class="glow"></div>
             <span class="badge">{{ p.categoria }}</span>
             <div class="img-box">
               <img :src="p.imagen" />
@@ -83,6 +82,7 @@ const productos = [
 .hero{
   background: transparent;
   padding:80px 0;
+  width: 100%;
 }
 
 .container{
@@ -117,31 +117,15 @@ const productos = [
 /* CARD */
 .card{
   background:white;
-  border-radius:28px;
+  /*border-radius:28px;*/
   overflow:hidden;
-  box-shadow:0 15px 35px rgba(0,0,0,.15);
+  box-shadow:0 0 .5rem .05rem #0005;
   transition:.4s ease;
   position:relative;
 }
 .card:hover{
-  transform:translateY(-12px);
-  box-shadow:0 20px 45px rgba(164,1,56,.35);
-}
-
-/* GLOW */
-.glow{
-  position:absolute;
-  bottom:-25px;
-  left:20px;
-  right:20px;
-  height:10px;
-  background:#A40138;
-  filter:blur(28px);
-  opacity:0;
-  transition:.5s;
-}
-.card:hover .glow{
-  opacity:.6;
+  transform:translateY(-1rem);
+  box-shadow: 0 .8rem .7rem .1rem #0005;
 }
 
 /* BADGE */
@@ -149,12 +133,12 @@ const productos = [
   position:absolute;
   top:14px;
   left:14px;
-  background:linear-gradient(45deg,#A40138,#d946ef);
+  background:linear-gradient(to bottom, #E8B3C0, #A40138);
   padding:6px 12px;
   border-radius:20px;
   font-size:11px;
   font-weight:600;
-  color:white;
+  color:var(--color5);
   z-index:2;
 }
 
@@ -210,7 +194,7 @@ const productos = [
 
 /* Texto */
 .info h3{
-  color:white;
+  color:var(--clolor5);
   font-size:15px;
 }
 
@@ -226,7 +210,7 @@ const productos = [
 .price{
   font-size:20px;
   font-weight:800;
-  color:white;
+  color:var(--color5);
   text-shadow:0 2px 4px rgba(0,0,0,.4);
 }
 
@@ -240,11 +224,11 @@ const productos = [
 
 /* BOTÓN */
 .btn{
-  background:linear-gradient(45deg,#000000,#d946ef);
+  background:linear-gradient(to bottom, #E8B3C0, #A40138);
   border:none;
   padding:18px 18px;
   border-radius:25px;
-  color:white;
+  color:var(--color5);
   font-size:12px;
   cursor:pointer;
   transform:translateY(8px);
@@ -261,13 +245,28 @@ const productos = [
 
 /* SWIPER */
 .my-swiper{
-  padding:30px 20px 70px;
+  /*padding:30px 20px 70px;*/
+  padding: 2.5rem .8rem 4.5rem;
 }
 
 /* CONTROLES SWIPER COLOR */
 :deep(.swiper-button-next),
 :deep(.swiper-button-prev){
   color:#A40138 !important;
+  opacity: .8;
+  font-weight: bold;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  transition: background-color .3s ease, box-shadow .3s ease, backdrop-filter .3s ease, opacity .3s ease;
+}
+
+:deep(.swiper-button-next):hover,
+:deep(.swiper-button-prev):hover{
+  background-color: #FBF5F680;
+  backdrop-filter: blur(.1rem);
+  box-shadow: 0 0 .5rem .05rem #0005;
+  opacity: 1;
 }
 
 :deep(.swiper-pagination-bullet){

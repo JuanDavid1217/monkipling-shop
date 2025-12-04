@@ -6,6 +6,7 @@
         <h2>Sobre nosotros.</h2>
         <div class="about">
           <div class="about-1">
+            <h3>Más que accesorios...</h3>
             <div>
               <h3>Más que accesorios...</h3>  
               <p>En nuestra tienda creemos que los accesorios no son solo objetos: son detalles que acompañan tu día a día, expresan tu estilo y hacen que cada momento sea especial.</p>
@@ -13,6 +14,7 @@
             <img src="../assets/images/about1.jpg" alt="Llavero de monito color rojo.">
           </div>
           <div class="about-2">
+            <h3>Compañeros de aventuras...</h3>
             <div>
               <h3>Compañeros de aventuras...</h3>
               <p>Nacimos con la idea de ofrecer productos prácticos, modernos y llenos de personalidad, siempre pensando en quienes disfrutan de llevar algo único.</p>
@@ -21,6 +23,7 @@
             <img src="../assets/images/about2.jpg" alt="Mochila color blanco con un fondo natural.">
           </div>
           <div class="about-3">
+            <h3>Gracias...</h3>
             <div>
               <h3>Gracias...</h3>
               <p>Gracias por ser parte de nuestra historia. Estamos aquí para ayudarte a encontrar lo que necesitas… y sorprenderte con algo más.</p>
@@ -137,6 +140,8 @@
     display: flex;
     justify-content: left;
     align-items: end;
+    /**/
+    /*color: var(--color5)*/
   }
 
   .about > div img {
@@ -150,42 +155,57 @@
     transition: transform .3s ease;
   }
 
+  .about > div > h3,
   .about > div > div {
-    position: relative;
     z-index: 2;
     padding: 1rem;
+    /*background-image: linear-gradient(to bottom, transparent, #000);*/
     background-color: #FBF5F699;
-    backdrop-filter: blur(.2rem);
+    backdrop-filter: blur(.1rem);
+  }
 
+  .about > div > h3 {
+    position: relative;
+    margin: 0;
+    min-width: fit-content;
+    /*min-width: 100%;*/
+    transition: opacity .3s ease;
+  }
+
+  .about > div:hover > h3 {
+    opacity: 0;
+  }
+
+  .about > div > div {
+    position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    /*justify-content: end;*/
+    inset: 0;
+    opacity: 0;
+    transition: opacity .3s ease;
+  }
+
+  .about > div:hover > div{
+    opacity: 1;
   }
 
   .about > div > div > h3 {
     margin: 0;
   }
-  
-  .about > div > div > p {
-    display: none;
-  }
 
-  .about > div:hover img{
+  .about > div:hover > img{
     transform: scale(1.2);
-  }
-
-  .about > div:hover div{
-    width: 100%;
-    height: 100%;
-  }
-
-  .about > div:hover div p {
-    display: block;
   }
 
   @media screen and (min-width: 576px){
     section {
       width: 90%;
+    }
+
+    h2 {
+      font-size: var(--step-2);
     }
   }
 
@@ -212,6 +232,16 @@
       "about-1  about-1 about-2 about-2 about-3 about-3"
       "about-1  about-1 about-2 about-2 about-3 about-3"
       "about-1  about-1 about-2 about-2 about-3 about-3";
+    }
+
+    h2 {
+      font-size: var(--step-3);
+    }
+  }
+
+  @media screen and (min-width: 1400px){
+    h2 {
+      font-size: var(--step-4);
     }
   }
 

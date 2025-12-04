@@ -79,7 +79,7 @@
 
 @media screen and (min-width: 576px){
     h2 {
-        font-size: var(--step-3);
+        font-size: var(--step-2);
     }
 
     p {
@@ -89,7 +89,7 @@
 
 @media screen and (min-width: 992px){
     h2 {
-        font-size: var(--step-4);
+        font-size: var(--step-3);
     }
     
     p {
@@ -99,7 +99,7 @@
 
 @media screen and (min-width: 1400px){
     h2 {
-        font-size: var(--step-5);
+        font-size: var(--step-4);
     }
     
     p {

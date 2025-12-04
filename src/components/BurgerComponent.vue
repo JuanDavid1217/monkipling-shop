@@ -122,7 +122,7 @@
         inset: 0;
         opacity: 0;
         pointer-events: none;
-        background-color: var(--color-filter-blur);
+        background-color: #0009;
         display: flex;
         z-index: -4;
         transition: opacity .3s ease;
