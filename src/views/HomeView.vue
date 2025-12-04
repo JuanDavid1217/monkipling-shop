@@ -59,7 +59,7 @@
         </div>
         <div>
           <p>Explora nuestra colección y descubre accesorios creados para inspirarte, complementarte y reflejar tu estilo único.</p>
-          <button type="button">Ver más</button>
+          <button type="button" @click="$router.push('/products')">Ver más</button>
         </div>
       </section>
     </article>
