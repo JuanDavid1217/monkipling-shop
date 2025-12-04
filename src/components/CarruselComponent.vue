@@ -250,23 +250,31 @@ const productos = [
 }
 
 /* CONTROLES SWIPER COLOR */
+
+:deep(.swiper-button-next::after),
+:deep(.swiper-button-prev::after) {
+  font-size: 1.3rem;
+  font-weight: bolder;
+  color:#A40138;
+}
+
 :deep(.swiper-button-next),
 :deep(.swiper-button-prev){
-  color:#A40138 !important;
   opacity: .8;
-  font-weight: bold;
-  width: 4rem;
-  height: 4rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
-  transition: background-color .3s ease, box-shadow .3s ease, backdrop-filter .3s ease, opacity .3s ease;
+  background-color: #FBF5F680;
+  backdrop-filter: blur(.1rem);
+  box-shadow: 0 0 .5rem .05rem #0005;
+  transition: background-color .3s ease, opacity .3s ease, transform .3s ease;
 }
 
 :deep(.swiper-button-next):hover,
 :deep(.swiper-button-prev):hover{
-  background-color: #FBF5F680;
-  backdrop-filter: blur(.1rem);
-  box-shadow: 0 0 .5rem .05rem #0005;
   opacity: 1;
+  background-color: #FBF5F6;
+  transform: scale(1.1);
 }
 
 :deep(.swiper-pagination-bullet){
