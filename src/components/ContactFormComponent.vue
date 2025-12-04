@@ -61,12 +61,18 @@
         font-size: inherit;
         font-family: inherit;
         flex: 1;
-        border: none;
+        border: medium solid var(--color1);
         padding: .5rem 1rem;
         font-weight: bold;
+        background-color: transparent;/*var(--color1)*/;
+        color: var(--color1);
+        cursor: pointer;
+        transition: background-color .3s ease, color .3s ease;
+    }
+
+    button:hover {
         background-color: var(--color1);
         color: var(--color5);
-        cursor: pointer;
     }
 
 </style>

@@ -226,6 +226,12 @@
     font-weight: bold;
     cursor: pointer;
     border: medium solid var(--color5);
+    transition: background-color .3s ease, color .3s ease;
+  }
+
+  .our-products > div:last-child > button:hover {
+    background-color: var(--color5);
+    color: var(--color1);
   }
 
   .contact-section {
