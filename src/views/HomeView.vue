@@ -34,12 +34,37 @@
       </section>
     </article>
     <article class="container">
-      <section>
+      <section class="our-products">
         <h2>Nuestros productos.</h2>
-        <p>Seleccionamos cada uno de nuestros productos con dedicación, buscando siempre el equilibrio perfecto entre estilo, calidad y funcionalidad.</p>
-        <p>En nuestra tienda encontrarás una variedad de accesorios pensados para acompañarte en tu día a día: bolsas, carteras, llaveros, termos y muchos otros detalles que hacen tu rutina más práctica y especial.</p>
-        <p>Trabajamos con materiales duraderos y diseños modernos, cuidando cada detalle para ofrecerte artículos que no solo se vean bien, sino que se sientan bien. Nuestro objetivo es que cada pieza se convierta en tu favorita y te acompañe en cada momento.</p>
-        <p>Explora nuestra colección y descubre accesorios creados para inspirarte, complementarte y reflejar tu estilo único.</p>
+        <div>
+          <div>
+            <h3>Calidad.</h3>
+            <p>Seleccionamos cada uno de nuestros productos con dedicación, buscando siempre el equilibrio perfecto entre estilo, calidad y funcionalidad.</p>
+          </div>
+          <img src="../assets/images/bolso1.webp" alt="">  
+        </div>
+        <div>
+          <div>
+            <h3>Variedad.</h3>
+            <p>En nuestra tienda encontrarás una variedad de accesorios pensados para acompañarte en tu día a día: bolsas, carteras, llaveros, termos y muchos otros detalles que hacen tu rutina más práctica y especial.</p>
+          </div>
+          <img src="../assets/images/bolso2.webp" alt="">
+        </div>
+        <div>
+          <div>
+            <h3>Estilo.</h3>
+            <p>Trabajamos con materiales duraderos y diseños modernos, cuidando cada detalle para ofrecerte artículos que no solo se vean bien, sino que se sientan bien. Nuestro objetivo es que cada pieza se convierta en tu favorita y te acompañe en cada momento.</p>
+          </div>
+          <img src="../assets/images/bolso3.webp" alt="">
+        </div>
+        <div>
+          <p>Explora nuestra colección y descubre accesorios creados para inspirarte, complementarte y reflejar tu estilo único.</p>
+          <button type="button">Ver más</button>
+        </div>
+      </section>
+    </article>
+    <article class="container">
+      <section>
         <CarruselComponent/>
       </section>
     </article>
@@ -69,44 +94,8 @@
     margin: auto;
   }
 
-  section > p {
+  section p {
     text-align: justify;
-  }
-
-  .contact-section {
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 2;
-  }
-
-  .contact-section > div {
-    padding: 1rem;
-    background-color: var(--color5);
-    text-align: center;
-    margin: 0 auto;
-    max-width: 100%;
-    overflow: auto;
-  }
-
-  .contrast {
-    position: relative;
-  }
-
-  .contrast > div {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    overflow: hidden;
-  }
-
-  .contrast > div img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
   }
 
   .about {
@@ -133,8 +122,6 @@
   .about-3 {
     grid-area: about-3;
   }
-
-  
 
   .about > div {
     position: relative;
@@ -201,6 +188,86 @@
     transform: scale(1.2);
   }
 
+  .our-products > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .our-products > div > div {
+    width: 100%;
+  }
+  
+  .our-products > div > img {
+    width: 100%;
+    height: 16rem;
+    object-fit: cover;
+  }
+
+  .our-products > div:last-child {
+    background-color: var(--color1);
+    padding: 1rem;
+    margin-top: 5rem;
+  }
+
+  .our-products > div:last-child > p {
+    text-align: center;
+    color: var(--color5);
+  }
+
+  .our-products > div:last-child > button {
+    margin: 0 auto;
+    display: block;
+    padding: .5rem 1rem;
+    color: var(--color5);
+    background-color: var(--color1);
+    font-weight: bold;
+    cursor: pointer;
+    border: medium solid var(--color5);
+  }
+
+  .contact-section {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 2;
+  }
+
+  .contact-section > div {
+    padding: 1rem;
+    background-color: var(--color5);
+    text-align: center;
+    margin: 0 auto;
+    max-width: 100%;
+    overflow: auto;
+  }
+
+  .contact-section > div > p {
+    text-align: center;
+  }
+
+  .contrast {
+    position: relative;
+  }
+
+  .contrast > div {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .contrast > div img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
   @media screen and (min-width: 576px){
     section {
       width: 90%;
@@ -213,15 +280,34 @@
 
   @media screen and (min-width: 768px){
     .about {
-      grid-template-rows: repeat(6, 8rem); 
+      grid-template-rows: repeat(4, 6rem) repeat(2, 9rem); 
       grid-template-areas:
       "about-1  about-1 about-1 about-2 about-2 about-2"
       "about-1  about-1 about-1 about-2 about-2 about-2"
       "about-1  about-1 about-1 about-2 about-2 about-2"
-      "about-3  about-3 about-3 about-3 about-3 about-3"
+      "about-1  about-1 about-1 about-2 about-2 about-2"
       "about-3  about-3 about-3 about-3 about-3 about-3"
       "about-3  about-3 about-3 about-3 about-3 about-3";
     }
+
+    .our-products > div:not(:last-child) {
+      flex-direction: row;
+    }
+
+    .our-products > div > div,
+    .our-products > div > img {
+      width: 50%;
+    }
+
+    .our-products > div:nth-child(even) > div {
+      padding-right: 1rem;
+    }
+
+    .our-products > div:nth-child(odd) > div {
+      order: 2;
+      padding-left: 1rem;
+    }
+
   }
 
   @media screen and (min-width: 992px){
