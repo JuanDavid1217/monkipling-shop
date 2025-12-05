@@ -58,7 +58,7 @@
           <img src="../assets/images/bolso3.webp" alt="">
         </div>
         <div>
-          <p>Explora nuestra colección y descubre accesorios creados para inspirarte, complementarte y reflejar tu estilo único.</p>
+          <h3>Explora nuestra colección y descubre accesorios creados para inspirarte, complementarte y reflejar tu estilo único.</h3>
           <button type="button" @click="$router.push('/products')">Ver más</button>
         </div>
       </section>
@@ -209,10 +209,10 @@
   .our-products > div:last-child {
     background-color: var(--color1);
     padding: 1rem;
-    margin-top: 5rem;
+    margin: 7rem 0 0;
   }
 
-  .our-products > div:last-child > p {
+  .our-products > div:last-child > h3 {
     text-align: center;
     color: var(--color5);
   }

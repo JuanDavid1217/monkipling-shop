@@ -81,7 +81,7 @@ const productos = [
 /* SECCIÓN */
 .hero{
   background: transparent;
-  padding:80px 0;
+  padding:2.5rem 0;
   width: 100%;
 }
 
