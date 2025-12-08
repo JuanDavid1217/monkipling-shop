@@ -269,7 +269,7 @@ const productos = [
 
 /* CONTROLES SWIPER COLOR */
 
-
+/*This is for an old swiper version*/
 :deep(.swiper-button-next::after),
 :deep(.swiper-button-prev::after) {
   font-size: 1.3rem;
@@ -277,24 +277,31 @@ const productos = [
   color:#A40138;
 }
 
+/*Now swiper controls use SVG*/
+:deep(.swiper-button-next svg),
+:deep(.swiper-button-prev svg) {
+  width: 1.1rem;
+  height: auto;
+  color:#A40138;
+}
+
 
 :deep(.swiper-button-next),
 :deep(.swiper-button-prev){
-  /*color:#A40138 !important;*/
   opacity: .8;
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  background-color: #e21d3e80;
+  background-color: #FBF5F680;
   backdrop-filter: blur(.1rem);
-  box-shadow: 0 0 .5rem .05rem rgba(255, 10, 10, 0.333);
+  box-shadow: 0 0 .2rem .02rem #0005;
   transition: background-color .3s ease, opacity .3s ease, transform .3s ease;
 }
 
 :deep(.swiper-button-next):hover,
 :deep(.swiper-button-prev):hover{
   opacity: 1;
-  background-color: #cc5f71;
+  background-color: #FBF5F6;
   transform: scale(1.1);
 
 }
