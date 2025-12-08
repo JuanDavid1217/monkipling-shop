@@ -2,9 +2,9 @@
 <template>
   <section class="hero">
     <div class="container">
-      <div class="title-wrapper">
-        <h2 class="title animate-fade-up">{{ titulo }}</h2>
-        <p class="subtitle">{{ descripcion }}</p>
+      <div>
+        <h2 class="about">{{ titulo }}</h2>
+        <p class="about-1">{{ descripcion }}</p>
       </div>
 
       <Swiper
@@ -33,7 +33,7 @@
               <h3>{{ p.nombre }}</h3>
               <div class="footer">
                 <p class="price">{{ p.precio }}</p>
-                <button class="btn">Agregar al Carrito   →</button>
+                <button class="btn"> Agregar al Carrito   →</button>
               </div>
             </div>
           </div>
@@ -51,6 +51,7 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
+
 
 defineProps({
   titulo: {
@@ -97,11 +98,13 @@ const productos = [
 }
 .title{
   color:#A40138;
-  font-size:48px;
+  text-align: center;
+  font-size: clamp(28px, 6vw, 48px);
   margin:0;
 }
 .subtitle{
   color:#6b7280;
+  text-align: center;
   font-size:16px;
 }
 
@@ -289,9 +292,9 @@ const productos = [
 
 /* MOBILE */
 @media(max-width:480px){
-  .title{
+  /*.title{
     font-size:28px;
-  }
+  }*/
   .img-box{
     height:200px;
   }
@@ -303,9 +306,9 @@ const productos = [
 
 /* TABLET */
 @media(min-width:481px) and (max-width:900px){
-  .title{
+ /* .title{
     font-size:36px;
-  }
+  }*/
   .img-box{
     height:220px;
   }
