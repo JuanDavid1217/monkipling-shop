@@ -2,7 +2,8 @@
 <template>
   <section class="hero">
     <div class="container">
-      <div>
+      <div class="title-wrapper">
+
         <h2 class="about">{{ titulo }}</h2>
         <p class="about-1">{{ descripcion }}</p>
       </div>
@@ -24,6 +25,7 @@
       >
         <SwiperSlide v-for="(p, i) in productos" :key="i">
           <div class="card">
+            <div class="glow"></div>
             <span class="badge">{{ p.categoria }}</span>
             <div class="img-box">
               <img :src="p.imagen" />
@@ -33,7 +35,7 @@
               <h3>{{ p.nombre }}</h3>
               <div class="footer">
                 <p class="price">{{ p.precio }}</p>
-                <button class="btn"> Agregar al Carrito   →</button>
+                <button class="btn">Agregar al Carrito   →</button>
               </div>
             </div>
           </div>
@@ -51,7 +53,6 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
-
 
 defineProps({
   titulo: {
@@ -98,13 +99,11 @@ const productos = [
 }
 .title{
   color:#A40138;
-  text-align: center;
-  font-size: clamp(28px, 6vw, 48px);
+  font-size:48px;
   margin:0;
 }
 .subtitle{
   color:#6b7280;
-  text-align: center;
   font-size:16px;
 }
 
@@ -131,12 +130,28 @@ const productos = [
   box-shadow: 0 .8rem .7rem .1rem #0005;
 }
 
+/* GLOW 
+.glow{
+  position:absolute;
+  bottom:-25px;
+  left:20px;
+  right:20px;
+  height:10px;
+  background:#A40138;
+  filter:blur(28px);
+  opacity:0;
+  transition:.5s;
+}
+.card:hover .glow{
+  opacity:.6;
+}*/
+
 /* BADGE */
 .badge{
   position:absolute;
   top:14px;
   left:14px;
-  background:linear-gradient(to bottom, #E8B3C0, #A40138);
+  background:linear-gradient(45deg,#A40138,#d946ef);
   padding:6px 12px;
   border-radius:20px;
   font-size:11px;
@@ -248,11 +263,12 @@ const productos = [
 
 /* SWIPER */
 .my-swiper{
-  /*padding:30px 20px 70px;*/
+/*padding:30px 20px 70px;*/
   padding: 2.5rem .8rem 4.5rem;
 }
 
 /* CONTROLES SWIPER COLOR */
+
 
 :deep(.swiper-button-next::after),
 :deep(.swiper-button-prev::after) {
@@ -261,25 +277,27 @@ const productos = [
   color:#A40138;
 }
 
+
 :deep(.swiper-button-next),
 :deep(.swiper-button-prev){
+  /*color:#A40138 !important;*/
   opacity: .8;
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  background-color: #FBF5F680;
+  background-color: #e21d3e80;
   backdrop-filter: blur(.1rem);
-  box-shadow: 0 0 .5rem .05rem #0005;
+  box-shadow: 0 0 .5rem .05rem rgba(255, 10, 10, 0.333);
   transition: background-color .3s ease, opacity .3s ease, transform .3s ease;
 }
 
 :deep(.swiper-button-next):hover,
 :deep(.swiper-button-prev):hover{
   opacity: 1;
-  background-color: #FBF5F6;
+  background-color: #cc5f71;
   transform: scale(1.1);
-}
 
+}
 :deep(.swiper-pagination-bullet){
   background:#A40138;
   opacity:.3;
@@ -290,11 +308,11 @@ const productos = [
   opacity:1;
 }
 
-/* MOBILE */
+/* MOBILE 
 @media(max-width:480px){
-  /*.title{
+  .title{
     font-size:28px;
-  }*/
+  }
   .img-box{
     height:200px;
   }
@@ -304,17 +322,17 @@ const productos = [
   }
 }
 
-/* TABLET */
+/* TABLET 
 @media(min-width:481px) and (max-width:900px){
- /* .title{
+  .title{
     font-size:36px;
-  }*/
+  }
   .img-box{
     height:220px;
   }
 }
 
-/* DESKTOP */
+/* DESKTOP 
 @media(min-width:1200px){
   .img-box{
     height:270px;
@@ -330,6 +348,49 @@ const productos = [
     opacity:1;
     transform:none;
   }
+}*/
+
+@media screen and (min-width: 576px){
+  .title{
+    font-size:28px;
+  }
+  .img-box{
+    height:200px;
+  }
+  .btn{
+    width:100%;
+    text-align:center;
+  }
+    h2 {
+        font-size: var(--step-2);
+    }
+
+    p {
+        font-size: var(--step-0);
+    }
+}
+
+@media screen and (min-width: 992px){
+    h2 {
+        font-size: var(--step-3);
+    }
+    
+    p {
+        font-size: var(--step-1);
+    }
+}
+
+@media screen and (min-width: 1400px){
+   .img-box{
+    height:270px;
+   }
+    h2 {
+        font-size: var(--step-4);
+    }
+    
+    p {
+        font-size: var(--step-2);
+    }
 }
 
 
