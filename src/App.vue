@@ -76,6 +76,33 @@
   h2 {
     color: var(--text-color-title);
   }
+
+  @keyframes appear {
+    from {
+      transform: translateY(3rem);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .appear {
+    /*
+    view-timeline-name: --test;
+    view-timeline-axis: block;
+
+    animation-timeline: --test;
+    */
+    animation-timeline: view();
+    animation-range: entry 10% cover 25%;
+
+    animation-name: appear;
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+  }
 </style>
 
 <script>

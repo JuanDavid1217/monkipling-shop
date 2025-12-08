@@ -3,8 +3,8 @@
     <HeroImageComponent/>
     <article class="container">
       <section>
-        <h2>Sobre nosotros.</h2>
-        <div class="about">
+        <h2 class="appear">Sobre nosotros.</h2>
+        <div class="about appear">
           <div class="about-1">
             <h3>Más que accesorios...</h3>
             <div>
@@ -35,44 +35,44 @@
     </article>
     <article class="container">
       <section class="our-products">
-        <h2>Nuestros productos.</h2>
-        <div>
+        <h2 class="appear">Nuestros productos.</h2>
+        <div class="appear">
           <div>
             <h3>Calidad.</h3>
             <p>Seleccionamos cada uno de nuestros productos con dedicación, buscando siempre el equilibrio perfecto entre estilo, calidad y funcionalidad.</p>
           </div>
           <img src="../assets/images/bolso1.webp" alt="">  
         </div>
-        <div>
+        <div class="appear">
           <div>
             <h3>Variedad.</h3>
             <p>En nuestra tienda encontrarás una variedad de accesorios pensados para acompañarte en tu día a día: bolsas, carteras, llaveros, termos y muchos otros detalles que hacen tu rutina más práctica y especial.</p>
           </div>
           <img src="../assets/images/bolso2.webp" alt="">
         </div>
-        <div>
+        <div class="appear">
           <div>
             <h3>Estilo.</h3>
             <p>Trabajamos con materiales duraderos y diseños modernos, cuidando cada detalle para ofrecerte artículos que no solo se vean bien, sino que se sientan bien. Nuestro objetivo es que cada pieza se convierta en tu favorita y te acompañe en cada momento.</p>
           </div>
           <img src="../assets/images/bolso3.webp" alt="">
         </div>
-        <div>
+        <div class="appear">
           <h3>Explora nuestra colección y descubre accesorios creados para inspirarte, complementarte y reflejar tu estilo único.</h3>
           <button type="button" @click="$router.push('/products')">Ver más</button>
         </div>
       </section>
     </article>
-    <article class="container">
+    <article class="container appear">
       <section>
         <CarruselComponent/>
       </section>
     </article>
-    <article class="container contrast">
+    <article class="container contrast appear">
       <div>
         <img src="../assets/images/contact.webp" alt="Vista frontal de la carretera desde el interior de un automóvil.">
       </div>
-      <section class="contact-section">
+      <section class="contact-section appear">
         <div>
           <h2>Contáctanos.</h2>
           <h3>¿Tienes alguna duda o necesitas atención personalizada?</h3>
