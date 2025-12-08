@@ -63,7 +63,7 @@
         </div>
       </section>
     </article>
-    <article class="container appear">
+    <article class="container">
       <section>
         <CarruselComponent/>
       </section>

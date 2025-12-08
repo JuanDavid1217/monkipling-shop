@@ -2,7 +2,7 @@
 <template>
   <section class="hero">
     <div class="container">
-      <div class="title-wrapper">
+      <div class="title-wrapper appear">
 
         <h2 class="about">{{ titulo }}</h2>
         <p class="about-1">{{ descripcion }}</p>
@@ -21,7 +21,7 @@
           1024: { slidesPerView: 3 },
           1280: { slidesPerView: 4 }
         }"
-        class="my-swiper"
+        class="my-swiper appear"
       >
         <SwiperSlide v-for="(p, i) in productos" :key="i">
           <div class="card">
