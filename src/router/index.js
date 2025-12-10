@@ -9,7 +9,7 @@ const routes = [
     meta: {page: 1}
   },
   {
-    path: '/products',
+    path: '/products/:search?',
     name: 'products',
     component: () => import('../views/ProductsView.vue'),
     meta: {page: 2}
