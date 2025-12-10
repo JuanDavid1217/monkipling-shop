@@ -113,11 +113,11 @@ If you only want to apply filters:
 `/products/?color=rojo`
 
 If you want to apply both, a search and filters:
-`/products/vestido de calidad?color=rojo&descount=true`
+`/products/vestido de calidad?color=rojo&discount=true`
 
 Intern, the script performs the search and filters in order:
 
 1. Apply the search (if provided) and update the metadata.
 2. Filter by color "rojo" only if the color exists in the metadata, then update it.
-3. Filter by products with a discount (`descount=true`) only if the descount exists in the metadata, then update it.
+3. Filter by products with a discount (`discount=true`) only if the discount exists in the metadata, then update it.
 4. Finally, return the filtered products and their updated metadata.
