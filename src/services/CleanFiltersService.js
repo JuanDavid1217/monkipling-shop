@@ -13,12 +13,20 @@ export const booleanValue = (value) => {
   }
 }
 
-export const integerValue = (value) => {
-  try {
-    return Number(value);
-  } catch(error) {
+export const numberValue = (value) => {
+  value = Number(value);
+  if (isNaN(value)) {
     return null;
   }
+  return value;
+}
+
+export const integerValue = (value) => {
+  value = parseInt(value);
+  if (isNaN(value)) {
+    return null;
+  }
+  return value;
 }
 
 export const removeStopWords = (text) => {
@@ -31,7 +39,7 @@ export const cleanFilters = (validFilters, filters) => {
   for (const [key, value] of Object.entries(filters)) {
     let newKey = normalizeValue(key);
     let newValue = normalizeValue(value)
-    if (validFilters.includes(newKey)) {
+    if (validFilters.includes(newKey) && newValue && newValue!="") {
       cleanedFilters[newKey] = newValue;
     }
   }
