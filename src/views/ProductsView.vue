@@ -5,6 +5,9 @@
             :metadata="metadata"
             :activeFilters="$route.query"
             :currentOrder="currentOrder"
+            :search = "search"
+            @update-search="updateSearch"
+            @submit-search="submitSearch"
             @filter-changed="handleSidebarFilterChange"
             @order-changed="updateOrder"
             @clear-filters = "handleClearFilters"
@@ -23,7 +26,7 @@
                 <div v-for="product in products" :key="product.id" class="product-card">
                     <div class="img-box">
                         <!-- Placeholder para imagen -->
-                        <img src="via.placeholder.com" alt="Product Image">
+                        <img :src="product.url" alt="Product Image">
                     </div>
                     {{ product.name }} - ${{ product.price }}
                     <button class="btn">Ver Detalles</button>
@@ -61,6 +64,7 @@ export default {
             metadata: null,
             loading: true,
             error: null,
+            search: "",
         };
     },
     computed: {
@@ -74,9 +78,10 @@ export default {
         fetchData() {
             this.loading = true;
             this.error = null;
-            
+            this.search = this.$route.params.search;
+
             const body = {
-                search: this.$route.params.search,
+                search: this.search,
                 filters: this.$route.query 
             };
 
@@ -89,6 +94,21 @@ export default {
                 this.error = "No se pudieron cargar los productos.";
             } finally {
                 this.loading = false;
+            }
+        },
+
+        updateSearch(newSearch) {
+            this.search = newSearch;
+        },
+
+        submitSearch() {
+            if (this.search) {
+                this.$router.push({
+                    name: this.$route.name,
+                    params: {
+                        search: this.search
+                    }
+                });
             }
         },
         
@@ -120,6 +140,7 @@ export default {
                 }
             });
         },
+
         handleClearFilters(){
             this.$router.push({
                 name: this.$route.name,

@@ -5,8 +5,13 @@
              <button v-if="hasActiveFilters" 
              @click="clearFilters" class="clear-btn">Limpiar</button>
         </div>
-       
 
+        <SearchComponent
+            :search="search"
+            @update-search="$emit('update-search', $event)"
+            @submit-search="$emit('submit-search', $event)"
+        />
+       
         <!-- Iterar sobre las secciones de filtros (Categoría, Color, Género, etc.) -->
         <div v-for="section in sections" :key="section.id" class="filter-section">
             <h3 @click="toggleSection(section.id)">
@@ -51,6 +56,8 @@
 </template>
 
 <script>
+import SearchComponent from "@/components/SearchComponent.vue";
+
 export default {
     name: 'SidebarFilters',
     props: {
@@ -65,6 +72,10 @@ export default {
         currentOrder: {
             type: String,
             default: 'min_price'
+        },
+        search: {
+            type: String,
+            default: '',
         }
     },
     data() {
@@ -72,6 +83,9 @@ export default {
             // Controla qué secciones del sidebar están abiertas visualmente
             openSections: ['category', 'gender', 'price', 'order', 'authenticity', 'discount'] 
         };
+    },
+    components: {
+        SearchComponent
     },
     computed: {
         sections() {
