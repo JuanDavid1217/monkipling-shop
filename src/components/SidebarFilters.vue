@@ -12,16 +12,16 @@
             @submit-search="$emit('submit-search', $event)"
         />
        
-        <!-- Iterar sobre las secciones de filtros (Categoría, Color, Género, etc.) -->
+        
         <div v-for="section in sections" :key="section.id" class="filter-section">
             <h3 @click="toggleSection(section.id)" :class="{ active: openSections.includes(section.id) }">
                 {{ section.section_name }}
                 <span class="toggle-icon">{{ openSections.includes(section.id) ? '−' : '+' }}</span>
             </h3>
             
-            <!-- Contenido de la sección (visible/oculto) -->
+            
             <div v-if="openSections.includes(section.id)" class="items-list">
-                <!-- Caso especial para Rango de Precio -->
+                <!-- Caso especial para Rango de Preciooo -->
                 <div v-if="section.id === 'price'">
                     <div class="price-range-info">
                         <span>Min: ${{ section.items?.[0]?.total }}</span>
@@ -29,7 +29,7 @@
                     </div>
                 </div>
 
-                <!-- Caso general para checkboxes -->
+              
                 <div v-else>
                     <label v-for="item in section.items" :key="item.item_name" class="checkbox-label">
                         <input 
@@ -37,7 +37,7 @@
                             :checked="isFilterApplied(section.id, item.item_name)"
                             @change="handleFilterChange(section.id, item.item_name, $event.target.checked)"
                         />
-                        <!-- Muestra "Sí" o "No" para booleanos si quieres una UI más amigable -->
+                        
                         {{ typeof item.item_name === 'boolean' ? (item.item_name ? 'Sí' : 'No') : item.item_name }} 
                         <span class="item-count">({{ item.total }})</span>
                     </label>
@@ -104,8 +104,7 @@ export default {
 <style scoped>
 /* Definición de una variable de color principal para acentos */
 :root {
-    --primary-color: #007bff; /* Azul moderno para botones/acentos */
-    --text-color: #333;
+    --primary-color: #007bff; 
     --background-color: #ffffff;
     --border-color: #e0e0e0;
 }
@@ -116,7 +115,7 @@ export default {
     background-color: var(--background-color);
     border-right: 1px solid var(--border-color);
     height: fit-content;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); /* Sombra suave para darle profundidad */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); 
 }
 
 /* Header y botón de Limpiar */
@@ -130,19 +129,19 @@ export default {
 }
 
 h2 {
-    font-size: 1.2rem; /* Tamaño de fuente más limpio para los títulos */
+    font-size: 1.2rem; 
     color: var(--primary-color);
 }
 
 .clear-btn {
-    background-color: #dc3545; /* Rojo para acción peligrosa/limpiar */
+    background-color: #dc3545; 
     color: white;
     border: none;
     padding: 6px 12px;
     cursor: pointer;
     border-radius: 4px;
     font-size: 0.8rem;
-    transition: background-color 0.3s; /* Transición suave al pasar el mouse */
+    transition: background-color 0.3s; 
 }
 .clear-btn:hover {
     background-color: #c82333;
@@ -186,7 +185,7 @@ h2 {
 .checkbox-label {
     display: flex;
     align-items: center;
-    margin-bottom: 8px; /* Espaciado mejorado */
+    margin-bottom: 8px;
     cursor: pointer;
     gap: 8px;
     font-size: 0.9rem;
@@ -197,12 +196,12 @@ h2 {
 }
 .checkbox-label input[type="checkbox"] {
     cursor: pointer;
-    accent-color: var(--primary-color); /* Estilo nativo con color de acento */
+    accent-color: var(--primary-color); 
 }
 
 .item-count {
     color: #888;
-    margin-left: auto; /* Empuja el contador a la derecha */
+    margin-left: auto; 
     font-size: 0.8rem;
 }
 
@@ -230,7 +229,7 @@ h2 {
     color: var(--text-color);
 }
 
-/* --- Tus Media Queries Existentes (Asegúrate de tener las variables CSS globales) --- */
+
 @media screen and (min-width: 576px){
   /* h2 { font-size: var(--step-2); } */
   /* p { font-size: var(--step-0); } */
