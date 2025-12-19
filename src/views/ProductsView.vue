@@ -193,7 +193,6 @@ export default {
 .product-card {
     border: none;
     padding: 0;
-    border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
     background-color: #ffffff; /* Tarjetas blancas puras para mayor contraste */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -252,7 +251,6 @@ export default {
     color: white;
     border: none;
     cursor: pointer;
-    border-radius: 4px;
     text-align: center;
     font-weight: 600;
     transition: background-color 0.2s ease, transform 0.1s ease;
@@ -269,7 +267,6 @@ export default {
     color: white;
     padding: 15px;
     background-color: var(--color1);
-    border-radius: 4px;
     font-weight: 500;
 }
 
@@ -281,9 +278,7 @@ export default {
     color: white;
     border: none;
     cursor: pointer;
-    margin-bottom: 15px;
     width: 100%;
-    border-radius: 5px;
     font-weight: 600;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -295,7 +290,6 @@ export default {
     background-color: #ffffff;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
-    border-radius: 8px;
     padding: 20px;
 }
 

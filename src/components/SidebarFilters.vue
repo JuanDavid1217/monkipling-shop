@@ -134,17 +134,16 @@ h2 {
 }
 
 .clear-btn {
-    background-color: #dc3545; 
+    background-color: var(--color1);
     color: white;
     border: none;
     padding: 6px 12px;
     cursor: pointer;
-    border-radius: 4px;
     font-size: 0.8rem;
     transition: background-color 0.3s; 
 }
 .clear-btn:hover {
-    background-color: #c82333;
+    background-color: #7a002a;
 }
 
 /* Secciones de Filtros */
@@ -229,17 +228,4 @@ h2 {
     color: var(--text-color);
 }
 
-
-@media screen and (min-width: 576px){
-  /* h2 { font-size: var(--step-2); } */
-  /* p { font-size: var(--step-0); } */
-}
-@media screen and (min-width: 992px){
-    /* h2 { font-size: var(--step-3); } */
-    /* p { font-size: var(--step-1); } */
-}
-@media screen and (min-width: 1400px){
-   /* h2 { font-size: var(--step-4); } */
-   /* p { font-size: var(--step-2); } */
-}
 </style>

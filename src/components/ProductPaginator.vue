@@ -62,6 +62,7 @@ export default {
 <style scoped>
 .paginator-nav {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     margin-top: 20px;
@@ -70,22 +71,18 @@ export default {
 }
 
 .nav-button {
-    font-size: "Open Sans", sans-serif;
-    font-size: 50%;
-    letter-spacing: 2px;
     text-decoration: none;
     text-transform: uppercase;
     color: white;
     cursor: pointer;
-    border: 3px solid;
-    padding: 1em 0.5em;
+    border: none;
+    padding: 0.5rem 1rem;
     box-shadow: 1px 1px 0px 0px 2px 2px 0px 0px 3px 3px 0px 0px 4px 4px 0px 0px 5px 5px 0px 0px;
     position: relative;
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-    background-color: #A40138;
-    border-radius: 4px;
+    background-color: var(--color1);
     transition: background-color 0.3s;
 }
 
@@ -95,12 +92,11 @@ export default {
 }
 
 .nav-button:hover:enabled {
-    background-color: #8f2d66;
+    background-color: #7a002a;
 }
 
 .page-info {
-    font-size: 1rem;
-    color: #333;
+    color: var(--text-color-base);
     min-width: 120px;
     text-align: center;
 }
