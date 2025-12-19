@@ -30,15 +30,19 @@
         font-size: inherit;
         color: inherit;
         font-family: inherit;
-        max-width: 88%;
+        flex-grow: 1;
+        flex-shrink: 0;
+        max-width: calc(100% - 1.5rem);
     }
 
     .search-button {
         position: relative;
         cursor: pointer;
         display: flex;
-        flex-grow: 1;
-        justify-content: right;
+        flex-grow: 0;
+        flex-shrink: 0;
+        justify-content: center;
+        padding-left: .5rem;
     }
 
     .search-button::before {
