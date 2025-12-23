@@ -62,6 +62,19 @@ The default JSON response structure is:
             },
             ...
         ],
+        "order": {
+            "options": [
+                {
+                    "id": "min_price",
+                    "name": "Precio: Menor a Mayor"
+                },
+                {
+                    "id": "max_price",
+                    "name": "Precio: Mayor a Menor"
+                }
+            ],
+            "current_order": "min_price"
+        },
         "page_size": 60,
         "total_pages": 17,
         "current_page": 1,
@@ -160,3 +173,12 @@ The following example: `/products/vestido de calidad?color=rojo&discount=true&or
 3. Finally, returns all products on page 2.
 
 **NOTE**: The number of products per page is 60.
+
+**View a specific product**
+
+To view a specific product, use the `/product/:id` route.
+
+**Example**
+
+The route `/product/d414cdba-11e2-41dc-9d74-9e512af85256` displays the product with the ID `d414cdba-11e2-41dc-9d74-9e512af85256`.
+If the product does not exist, a `404 Not Found` page is shown.

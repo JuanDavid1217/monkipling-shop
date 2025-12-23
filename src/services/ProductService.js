@@ -225,4 +225,8 @@ export const getAll = (body) => {
     }
 }
 
+export const getProduct = (id) => {
+    const product = data.find(item => item.id == id);
+    return product;
+}
 /*fuzzy search fuse js*/

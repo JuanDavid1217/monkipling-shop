@@ -39,7 +39,7 @@
                     <div class="product-info">
                         <span class="product-name">{{ product.name }}</span>
                         <span class="product-price">${{ product.price }}</span>
-                        <button class="btn">Ver Detalles</button>
+                        <button class="btn" @click="$router.push(`/product/${product.id}`)">Ver Detalles</button>
                     </div>
                 </div>
             </div>

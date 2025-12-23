@@ -15,6 +15,12 @@ const routes = [
     meta: {page: 2}
   },
   {
+    path: '/product/:id',
+    name: 'product',
+    component: () => import('../views/ProductView.vue'),
+    meta: {page: 2}
+  },
+  {
     path: '/:pathMatch(.*)*',
     name: 'notFound',
     component: () => import('../views/NotFoundView.vue')
