@@ -128,15 +128,29 @@ const filterByPrice = (searchValue, key, metadata, results) => {
     return results;
 }
 
-const orderBy = (option, results) => {
+const orderBy = (results, metadata, option) => {
+    metadata["order"] = {
+        "options": [
+            {
+                "id": "min_price",
+                "name": "Precio: Menor a Mayor"
+            },
+            {
+                "id": "max_price",
+                "name": "Precio: Mayor a Menor"
+            }
+        ],
+        "current_order": "min_price"
+    }
     switch (option) {
         case "max_price":
-            results = results.sort((product1, product2) => product2["price"] - product1["price"]);
+            metadata["order"]["current_order"]="max_price";
+            results.sort((product1, product2) => product2["price"] - product1["price"]);
             break;
         default:
-            results = results.sort((product1, product2) => product1["price"] - product2["price"]);
+            results.sort((product1, product2) => product1["price"] - product2["price"]);
     }
-    return results;
+    return metadata;
 }
 
 const paginateData = (data, metadata, page=1) => {
@@ -201,7 +215,7 @@ export const getAll = (body) => {
         }
         
         //Ordering
-        productsFiltered = orderBy(order, productsFiltered);
+        metadata = orderBy(productsFiltered, metadata, order);
 
         //Pagination
         return paginateData(productsFiltered, metadata, page);
