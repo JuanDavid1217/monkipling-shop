@@ -33,7 +33,7 @@
                 <div v-for="product in products" :key="product.id" class="product-card">
                     <div class="img-box">
                         <!-- Placeholder para imagen -->
-                        <img :src="product.url" alt="Product Image">
+                        <img :src="product.url[0]" alt="Product Image">
                     </div>
                     <!-- Contenedor de información para alinear elementos -->
                     <div class="product-info">
