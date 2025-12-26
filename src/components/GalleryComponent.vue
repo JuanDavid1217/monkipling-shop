@@ -14,6 +14,8 @@
 
 <style scoped>
     .content {
+        --gallery-height: 6rem;
+        --content-height: calc(100svh - var(--header-height) - (var(--padding-x) * 2) - 2.5rem);
         display: flex;
         flex-direction: column;
         gap: .5rem;
@@ -22,12 +24,14 @@
 
     .principal-image {
         width: 100%;
-        height: 26rem;
+        min-height: 26rem;
+        height: calc(var(--content-height) - var(--gallery-height));
         position: relative;
     }
 
     .principal-image img {
         width: 100%;
+        min-height: inherit;
         height: inherit;
         object-fit: contain;
         transition: opacity .3s ease;
@@ -84,7 +88,7 @@
 
     .gallery {
         width: 100%;
-        height: 6rem;
+        height: var(--gallery-height);
         display: flex;
         flex-direction: row;
         gap: .5rem;
@@ -120,13 +124,14 @@
 
         .principal-image {
             width: 80%;
-            height: 29.5rem;
+            height: var(--content-height);
             order: 2;
         }
 
         .gallery {
             width: 20%;
-            height: 29.5rem;
+            min-height: 26rem;
+            height: var(--content-height);
             order: 1;
             flex-direction: column;
         }
