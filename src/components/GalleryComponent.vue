@@ -16,6 +16,8 @@
     .content {
         --gallery-height: 6rem;
         --content-height: calc(100svh - var(--header-height) - (var(--padding-x) * 2) - 2.5rem);
+        --min-height: 15rem;
+        --max-height: 30rem;
         display: flex;
         flex-direction: column;
         gap: .5rem;
@@ -24,8 +26,9 @@
 
     .principal-image {
         width: 100%;
-        min-height: 26rem;
-        height: calc(var(--content-height) - var(--gallery-height));
+        min-height: var(--min-height);
+        height: calc(var(--content-height) - var(--gallery-height) - .5rem);
+        max-height: var(--max-height);
         position: relative;
     }
 
@@ -33,6 +36,7 @@
         width: 100%;
         min-height: inherit;
         height: inherit;
+        max-height: inherit;
         object-fit: contain;
         transition: opacity .3s ease;
     }
@@ -116,7 +120,7 @@
         opacity: 0;
     }
 
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 992px) {
         .content {
             display: flex;
             flex-direction: row;
@@ -130,8 +134,9 @@
 
         .gallery {
             width: 20%;
-            min-height: 26rem;
+            min-height: var(--min-height);
             height: var(--content-height);
+            max-height: var(--max-height);
             order: 1;
             flex-direction: column;
         }
