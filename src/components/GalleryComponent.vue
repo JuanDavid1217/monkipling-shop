@@ -1,15 +1,23 @@
 <template>
     <div class="content">
         <div class="principal-image">
-            <img :src="images[activeImage]" :class="{changing: isChanging}">
-            <div class="backward" @click="backward()"><svg class="swiper-navigation-icon" width="11" height="20" viewBox="0 0 11 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.38296 20.0762C0.111788 19.805 0.111788 19.3654 0.38296 19.0942L9.19758 10.2796L0.38296 1.46497C0.111788 1.19379 0.111788 0.754138 0.38296 0.482966C0.654131 0.211794 1.09379 0.211794 1.36496 0.482966L10.4341 9.55214C10.8359 9.9539 10.8359 10.6053 10.4341 11.007L1.36496 20.0762C1.09379 20.3474 0.654131 20.3474 0.38296 20.0762Z" fill="currentColor"></path></svg></div>
-            <div class="forward" @click="forward()"><svg class="swiper-navigation-icon" width="11" height="20" viewBox="0 0 11 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.38296 20.0762C0.111788 19.805 0.111788 19.3654 0.38296 19.0942L9.19758 10.2796L0.38296 1.46497C0.111788 1.19379 0.111788 0.754138 0.38296 0.482966C0.654131 0.211794 1.09379 0.211794 1.36496 0.482966L10.4341 9.55214C10.8359 9.9539 10.8359 10.6053 10.4341 11.007L1.36496 20.0762C1.09379 20.3474 0.654131 20.3474 0.38296 20.0762Z" fill="currentColor"></path></svg></div>
-            <div class="expand"><i class="bi bi-arrows-angle-expand"></i></div>
+            <img :src="images[activeImage]" :class="{changing: isChanging}" @click="openFullScreen">
+            <div class="backward" @click="backward"><svg class="swiper-navigation-icon" width="11" height="20" viewBox="0 0 11 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.38296 20.0762C0.111788 19.805 0.111788 19.3654 0.38296 19.0942L9.19758 10.2796L0.38296 1.46497C0.111788 1.19379 0.111788 0.754138 0.38296 0.482966C0.654131 0.211794 1.09379 0.211794 1.36496 0.482966L10.4341 9.55214C10.8359 9.9539 10.8359 10.6053 10.4341 11.007L1.36496 20.0762C1.09379 20.3474 0.654131 20.3474 0.38296 20.0762Z" fill="currentColor"></path></svg></div>
+            <div class="forward" @click="forward"><svg class="swiper-navigation-icon" width="11" height="20" viewBox="0 0 11 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.38296 20.0762C0.111788 19.805 0.111788 19.3654 0.38296 19.0942L9.19758 10.2796L0.38296 1.46497C0.111788 1.19379 0.111788 0.754138 0.38296 0.482966C0.654131 0.211794 1.09379 0.211794 1.36496 0.482966L10.4341 9.55214C10.8359 9.9539 10.8359 10.6053 10.4341 11.007L1.36496 20.0762C1.09379 20.3474 0.654131 20.3474 0.38296 20.0762Z" fill="currentColor"></path></svg></div>
+            <div class="expand" @click="openFullScreen"><i class="bi bi-arrows-angle-expand"></i></div>
         </div>
         <div class="gallery">
             <img v-for="(image, index) in images" :key="`gallery-image-${index}`" :src="image" :class="{active: index==activeImage}" @click="selectImage(index)" :ref="item => galleryImages[index] = item">
         </div>
-    </div>             
+    </div>
+    <div :class="['full-screen', {'open-full-screen': isFull}]">
+        <div class="full-screen-wrapper">
+            <img :src="images[activeImage]" :class="{changing: isChanging}">
+            <div class="backward" @click="backward"><svg class="swiper-navigation-icon" width="11" height="20" viewBox="0 0 11 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.38296 20.0762C0.111788 19.805 0.111788 19.3654 0.38296 19.0942L9.19758 10.2796L0.38296 1.46497C0.111788 1.19379 0.111788 0.754138 0.38296 0.482966C0.654131 0.211794 1.09379 0.211794 1.36496 0.482966L10.4341 9.55214C10.8359 9.9539 10.8359 10.6053 10.4341 11.007L1.36496 20.0762C1.09379 20.3474 0.654131 20.3474 0.38296 20.0762Z" fill="currentColor"></path></svg></div>
+            <div class="forward" @click="forward"><svg class="swiper-navigation-icon" width="11" height="20" viewBox="0 0 11 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.38296 20.0762C0.111788 19.805 0.111788 19.3654 0.38296 19.0942L9.19758 10.2796L0.38296 1.46497C0.111788 1.19379 0.111788 0.754138 0.38296 0.482966C0.654131 0.211794 1.09379 0.211794 1.36496 0.482966L10.4341 9.55214C10.8359 9.9539 10.8359 10.6053 10.4341 11.007L1.36496 20.0762C1.09379 20.3474 0.654131 20.3474 0.38296 20.0762Z" fill="currentColor"></path></svg></div>
+            <div title="Cerrar" class="close-full-screen" @click="closeFullScreen"><i class="bi bi-x"></i></div>
+        </div>
+    </div>
 </template>
 
 <style scoped>
@@ -38,12 +46,16 @@
         height: inherit;
         max-height: inherit;
         object-fit: contain;
+        object-position: center;
         transition: opacity .3s ease;
+        cursor: pointer;
     }
 
     .principal-image .backward,
     .principal-image .forward,
-    .principal-image .expand {
+    .principal-image .expand,
+    .full-screen-wrapper .backward,
+    .full-screen-wrapper .forward {
         position: absolute;
         opacity: .8;
         width: 3rem;
@@ -57,16 +69,21 @@
         justify-content: center;
         align-items: center;
         transition: transform .3s ease, opacity .3s ease;
+        cursor: pointer;
     }
 
     .principal-image .backward,
-    .principal-image .forward {
+    .principal-image .forward,
+    .full-screen-wrapper .backward,
+    .full-screen-wrapper .forward {
         border-radius: 50%;
     }
 
     .principal-image .backward:hover,
     .principal-image .forward:hover,
-    .principal-image .expand:hover {
+    .principal-image .expand:hover,
+    .full-screen-wrapper .backward:hover,
+    .full-screen-wrapper .forward:hover {
         transform: scale(1.1);
         opacity: 1;
     }
@@ -76,7 +93,8 @@
         left: 0;
     }
 
-    .principal-image .backward svg {
+    .principal-image .backward svg,
+    .full-screen-wrapper .backward svg {
         transform: rotate(180deg);
     }
     
@@ -106,6 +124,7 @@
         object-fit: cover;
         opacity: .5;
         transition: opacity .3s ease;
+        cursor: pointer;
     }
 
     .gallery img:hover {
@@ -118,6 +137,81 @@
 
     .changing {
         opacity: 0;
+    }
+
+    .full-screen {
+        position: fixed;
+        inset: 0;
+        padding: 3rem;
+        background-color: #0009;
+        z-index: 999;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .3s ease;
+        backdrop-filter: blur(5rem);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .full-screen-wrapper {
+        width: 100%/*fit-content*/;
+        max-width: 100%;
+        height: 100%;
+        max-height: 100%;
+        position: relative;
+    }
+
+    .full-screen-wrapper img {
+        width: 100%;
+        max-width: 100%;
+        height: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        object-position: center;
+        filter: drop-shadow(0 0 .2rem #0005);
+        transition: opacity .3s ease;
+    }
+
+    .full-screen-wrapper .backward {
+        top: 50%;
+        left: -1.5rem;
+    }
+    
+    .full-screen-wrapper .forward {
+        top: 50%;
+        right: -1.5rem;
+    }
+
+    .open-full-screen {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .close-full-screen {
+        width: 3rem;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background-color: var(--color1);
+        color: #FFF;
+        font-weight: bold;
+        font-size: 1.5rem;
+        position: absolute;
+        top: -1.5rem;
+        right: -1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        opacity: .8;
+        box-shadow: 0 0 .2rem .02rem #0005;
+        transition: transform .3s ease, opacity .3s ease;
+    }
+
+    .close-full-screen:hover {
+        transform: scale(1.1);
+        opacity: 1;
     }
 
     @media screen and (min-width: 992px) {
@@ -163,7 +257,8 @@
             return {
                 activeImage: 0,
                 isChanging: false,
-                galleryImages: []
+                galleryImages: [],
+                isFull: false,
             }
         },
         methods: {
@@ -219,6 +314,12 @@
                 this.$nextTick(() => {
                     this.scrollToActive();
                 });
+            },
+            openFullScreen() {
+                if (!this.isFull) this.isFull = !this.isFull;
+            },
+            closeFullScreen() {
+                if (this.isFull) this.isFull = !this.isFull;
             }
         },
     }
