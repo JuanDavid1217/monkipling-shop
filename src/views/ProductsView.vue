@@ -23,7 +23,21 @@
 
         <!-- Contenido Principal -->
         <section class="content">
-            <h1 class="title">Resultados ({{ metadata?.total_products || 0 }})</h1>
+            <div class="header-content">
+                <h1 class="title">Resultados ({{ metadata?.total_products || 0 }})</h1>
+
+                <div class ="order-wrapper">
+                    <label>Ordenar Por:</label>
+                    <select
+                        :value="currentOrder"
+                        @change="updateOrder($event.target.value)"
+                    >
+                        <option value="min_price">Precio: Menor a Mayor</option>
+                        <option value="max_price">Precio: Mayor a Menor</option>
+                    </select>
+
+                </div>
+            </div>
 
             <div v-if="loading">Cargando productos...</div>
             <div v-else-if="error" class="error">{{ error }}</div>
@@ -326,4 +340,32 @@ export default {
 @media screen and (min-width: 1400px){
    .product-list { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
 }
+
+.header-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+
+}
+
+.order-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.order-wrapper label {
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.order-wrapper select {
+    padding: 6px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--color2);
+    cursor: pointer;
+}
+
 </style>

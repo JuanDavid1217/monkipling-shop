@@ -46,13 +46,7 @@
         </div>
         
         <!-- Sección de Ordenar por -->
-        <div class="filter-section order-section">
-            <h3>Ordenar por</h3>
-            <select :value="currentOrder" @change="handleOrderChange($event.target.value)" class="order-select">
-                <option value="min_price">Precio: Menor a Mayor</option>
-                <option value="max_price">Precio: Mayor a Menor</option>
-            </select>
-        </div>
+
     </aside>
 </template>
 
