@@ -8,7 +8,7 @@
                         <GalleryComponent :images="info.url"/>
                     </article>
                     <article class="controls">
-                        controls
+                        <PurchaseCardComponent :info="info"/>
                     </article>
                     <article class="descriptions">
                         <h3>Información del producto.</h3>
@@ -25,7 +25,7 @@
 
 <style scoped>
     h2 {
-        margin: 0 0 1rem;
+        margin: 0 0 2rem;
     }
 
     .container {
@@ -54,7 +54,6 @@
 
     .controls {
         grid-area: controls;
-        border: thin solid yellow;
     }
 
     .descriptions {
@@ -101,12 +100,14 @@
     import { getProduct } from '@/services/ProductService';
     import NotFoundView from './NotFoundView.vue';
     import GalleryComponent from '@/components/GalleryComponent.vue';
+    import PurchaseCardComponent from '@/components/PurchaseCardComponent.vue';
     
     export default {
         name: "ProductView",
         components: {
             NotFoundView,
-            GalleryComponent
+            GalleryComponent,
+            PurchaseCardComponent
         },
         data() {
             return {

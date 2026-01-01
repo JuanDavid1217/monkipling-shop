@@ -23,7 +23,7 @@
 <style scoped>
     .content {
         --gallery-height: 6rem;
-        --content-height: calc(100svh - var(--header-height) - (var(--padding-x) * 2) - 2.5rem);
+        --content-height: calc(100svh - var(--header-height) - (var(--padding-x) * 2) - 4.5rem);
         --min-height: 15rem;
         --max-height: 30rem;
         display: flex;
