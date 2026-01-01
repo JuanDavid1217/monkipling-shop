@@ -11,7 +11,10 @@
                         controls
                     </article>
                     <article class="descriptions">
-                        {{info.description}}
+                        <h3>Información del producto.</h3>
+                        <p>
+                            {{info.description}}
+                        </p>
                     </article>
                 </div>
             </section>
@@ -56,7 +59,10 @@
 
     .descriptions {
         grid-area: descriptions;
-        border: thin solid red;
+    }
+
+    .descriptions p {
+        text-align: justify;
     }
 
     @media screen and (min-width: 576px){

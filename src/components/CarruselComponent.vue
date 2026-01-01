@@ -151,7 +151,7 @@ const productos = [
   position:absolute;
   top:14px;
   left:14px;
-  background:linear-gradient(45deg,#A40138,#d946ef);
+  background:linear-gradient(45deg,#A40138,#E8B3C0);
   padding:6px 12px;
   border-radius:20px;
   font-size:11px;
