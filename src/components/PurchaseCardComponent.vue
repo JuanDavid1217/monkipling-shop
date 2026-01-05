@@ -4,25 +4,23 @@
             {{ info.available_stock > 0 ? "Disponible" : "Agotado" }}
         </section>
         <section class="product-info">
-            <div v-if="info.discount" :class="['discount', {'sold-out': info?.available_stock==0}]"><small>{{ info.discount }}%</small></div>
+            <div v-if="info.discount" :class="['discount', {'sold-out': info?.available_stock==0}]"><small>-{{ info.discount }}% OFF</small></div>
             <div class="price">
                 <label class="price-1"><b>${{ newPrice }}</b></label>
                 <label v-if="info.discount" class="price-2">${{ info.price }}</label>
             </div>
             <hr :class="{'sold-out': info?.available_stock==0}"/>
-            <small>Unidades disponibles: <b>{{ info?.available_stock }}</b></small>
-            <br>
+            <small>Unidades disponibles: <b>{{ info?.available_stock === 1 ? '¡Última disponible!' : info?.available_stock }}</b></small>
             <div class="subtotal">
                 <label>Subtotal:</label>
                 <label>${{ subtotal }}</label>
             </div>
             <div class="quantity-controls">
-                <button @click="minus()" :class="{'sold-out-3': info?.available_stock==0}" :disabled="quantity==0||info?.available_stock==0?true:false"><i class="bi bi-dash"></i></button>
+                <button @click="minus()" :class="{'sold-out-3': quantity==1||info?.available_stock==0}" :disabled="quantity==1||info?.available_stock==0?true:false"><i class="bi bi-dash"></i></button>
                 <div>{{ quantity }}</div>
-                <button @click="plus()" :class="{'sold-out-3': info?.available_stock==0}" :disabled="info?.available_stock==quantity?true:false"><i class="bi bi-plus"></i></button>
+                <button @click="plus()" :class="{'sold-out-3': info?.available_stock==quantity}" :disabled="info?.available_stock==quantity?true:false"><i class="bi bi-plus"></i></button>
             </div>
             <!-- <hr :class="{'sold-out': info?.available_stock==0}"/> -->
-            <br>
             <div class="options">
                 <button :disabled="info?.available_stock==0 || quantity==0" :class="{'sold-out': info?.available_stock==0}"><label>Comprar ahora</label></button>
                 <button :disabled="info?.available_stock==0 || quantity==0" :class="{'sold-out-2': info?.available_stock==0}"><i class="bi bi-cart-plus"></i><label>Agregar al carrito</label></button>
@@ -50,15 +48,23 @@
     .sold-out {
         border: thin solid #8c8c8c !important;
         background-color: #8c8c8c !important;
+        cursor: auto !important;
     }
     
     .sold-out-2 {
         border: thin solid #8c8c8c !important;
         color: #8c8c8c !important;
+        cursor: auto !important;
     }
 
     .sold-out-3 {
         color: #8c8c8c !important;
+        cursor: auto !important;
+        box-shadow: none !important;
+    }
+
+    .sold-out-3:hover {
+        transform: none !important;
     }
 
     .product-info {
@@ -107,6 +113,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        margin-top: 1rem;
     }
 
     .product-info .subtotal label:last-child {
@@ -119,14 +126,27 @@
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
+        margin-bottom: 1rem;
     }
 
     .product-info .quantity-controls button {
         background-color: transparent;
         border: none;
+        width: auto;
+        aspect-ratio: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
         color: var(--color1);
         font-size: var(--step-1);
         cursor: pointer;
+        box-shadow: 0 0 0.25rem 0.01rem #0003;
+        transition: transform .3s ease;
+    }
+
+    .product-info .quantity-controls button:hover {
+        transform: scale(1.1);
     }
 
     .product-info .quantity-controls div {
